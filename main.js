@@ -49,58 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
   //remove task from UI and LS
   myList.addEventListener("click", e => {
     //remove from UI
-    let toBeDel
-    if (e.target.closest('li > button')) {
-        toBeDel = e.target.parentNode.childNodes[0].wholeText;
-        e.target.parentNode.remove();   
+    let toBeDel;
+
+    if (e.target.closest("li > button")) {
+      toBeDel = e.target.parentNode.childNodes[0].wholeText;
+      e.target.parentNode.remove();
     }
+
     //remove from LS
     const tasks = JSON.parse(localStorage.getItem("tasks"));
     const index = tasks.indexOf(toBeDel);
     tasks.splice(index, 1);
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-    
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   });
-
-  //   tasks = localStorage.getItem("tasks")
-  //     ? JSON.parse(localStorage.getItem("tasks"))
-  //     : [];
-  //   display();
-
-  //   document.querySelector("#form").addEventListener("submit", event => {
-  //     event.preventDefault();
-  //     if (task.value == false) return;
-  //     update(task.value);
-  //     display();
-  //     task.value = "";
-  // });
-
-  //   function update(task) {
-  //     tasks.push(task);
-  //     localStorage.setItem("tasks", JSON.stringify(tasks));
-  //   }
-
-  //   function delfromStore(del) {
-  //     tasks = JSON.parse(localStorage.getItem("tasks"));
-  //     const actual = tasks.filter(one => one !== del);
-  //     localStorage.setItem("tasks", JSON.stringify(actual));
-  //     display();
-  //   }
-
-  //   function display() {
-  //     let newTask = "";
-  //     tasks.forEach(task => {
-  //       newTask += `<li>${task}<button>del</button></li>`;
-  //     });
-  //     myList.innerHTML = newTask;
-  //     const btns = document.querySelectorAll('button');
-  //     btns.forEach(btn => {
-  //         btn.addEventListener('click', function(e){
-  //             console.log(this.parentElement)
-  //             this.parentElement.remove()
-  //             const toBeDel = e.currentTarget.parentElement.childNodes[0].data;
-  //             delfromStore(toBeDel);
-  //         })
-  //     })
-  //   }
 });
